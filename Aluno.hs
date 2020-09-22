@@ -13,7 +13,7 @@ getBuscarR nome = do
     aluno <- runDB $ selectList [Filter AlunoNome (Left $  concat ["%", nome, "%"]) (BackendSpecificFilter "ILIKE")] []
     sendStatusJSON ok200 (object ["resp" .= aluno])
 
--- {"resp":2}
+-- {"rosp":2}
 postAlunoR :: Handler TypedContent
 postAlunoR = do 
     aluno <- requireJsonBody :: Handler Aluno
